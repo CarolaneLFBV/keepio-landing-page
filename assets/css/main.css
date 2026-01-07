@@ -1,29 +1,244 @@
 @import "tailwindcss";
 
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+/* ============================================
+   KEEPIO DESIGN SYSTEM - Web Tokens
+   ============================================ */
+
+:root {
+  /* Colors */
+  --keepio-bg: #FAFAFA;
+  --keepio-card: #FFFFFF;
+  --keepio-text: #1A1A1A;
+  --keepio-text-secondary: #6B7280;
+  --keepio-accent: #6366F1;
+  --keepio-accent-light: #818CF8;
+  --keepio-border: rgba(0, 0, 0, 0.06);
+
+  /* Spacing (matching iOS) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 32px;
+  --space-4xl: 48px;
+
+  /* Corner Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 36px;
+
+  /* Shadows (subtle like iOS) */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 8px 32px rgba(0, 0, 0, 0.08);
+
+  /* Animation */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --duration-slow: 500ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.animate-fade-in {
-    animation: fade-in 0.6s ease-out forwards;
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --keepio-bg: #0A0A0A;
+    --keepio-card: #1A1A1A;
+    --keepio-text: #FAFAFA;
+    --keepio-text-secondary: #9CA3AF;
+    --keepio-border: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--keepio-bg);
+  color: var(--keepio-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slide-up {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s var(--ease-out) forwards;
 }
 
 .animate-slide-up {
-    animation: slide-up 0.6s ease-out forwards;
+  animation: slide-up 0.6s var(--ease-out) forwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.5s var(--ease-spring) forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+
+/* ============================================
+   COMPONENTS
+   ============================================ */
+
+/* Keepio Card */
+.keepio-card {
+  background: var(--keepio-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--keepio-border);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.keepio-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Keepio Button */
+.keepio-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-xl);
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.keepio-btn-primary {
+  background: var(--keepio-text);
+  color: var(--keepio-bg);
+}
+
+.keepio-btn-primary:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.keepio-btn-secondary {
+  background: transparent;
+  border: 1px solid var(--keepio-border);
+  color: var(--keepio-text);
+}
+
+.keepio-btn-secondary:hover {
+  background: var(--keepio-card);
+  border-color: var(--keepio-text);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, var(--keepio-accent), var(--keepio-accent-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subtle gradient background */
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    var(--keepio-bg) 0%,
+    color-mix(in srgb, var(--keepio-accent) 3%, var(--keepio-bg)) 50%,
+    var(--keepio-bg) 100%
+  );
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

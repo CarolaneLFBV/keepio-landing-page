@@ -2,8 +2,10 @@
   "app": "Keepio",
   "appSubtitle": "Organisez vos projets avec clarté et simplicité",
   "about": "À propos",
-  "availableSoon": "Disponible bientôt",
+  "availableSoon": "Télécharger sur",
   "features": "Fonctionnalités",
+  "featuresTitle": "Tout ce dont vous avez besoin",
+  "featuresSubtitle": "Organisez vos projets, tâches et notes dans un seul endroit magnifique.",
   "upcoming": "À venir",
   "contact": "Contact",
   "gcu": "CGU",
@@ -24,13 +26,24 @@
   "syncText": "Synchronisation transparente sur tous vos appareils Apple",
   "form": {
     "title": "Contactez-nous",
-    "subtitle": "Un bug, une suggestion ou une question ? Nous serions ravis de vous entendre.",
+    "subtitle": "Un bug, une suggestion ou juste un petit coucou ? Nous serions ravis de vous lire.",
     "email": "E-mail",
     "name": "Nom",
     "subject": "Sujet",
     "message": "Message",
     "clear": "Effacer",
-    "send": "Envoyer"
+    "send": "Envoyer",
+    "errors": {
+      "nameRequired": "Veuillez entrer votre nom",
+      "emailInvalid": "Veuillez entrer un email valide",
+      "subjectRequired": "Veuillez entrer un sujet",
+      "messageRequired": "Le message doit contenir au moins 10 caractères"
+    },
+    "states": {
+      "sending": "Envoi en cours...",
+      "success": "Message envoyé ! Nous vous répondrons bientôt.",
+      "error": "Une erreur est survenue. Veuillez réessayer."
+    }
   },
   "futureFeatures": {
     "title": "Bientôt dans votre app",

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted } from 'vue'
-import { useI18n } from "#imports";
-const { t } = useI18n();
+import { useI18n } from '#imports'
+
+const { t } = useI18n()
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
@@ -13,16 +14,16 @@ const formData = reactive({
   name: '',
   email: '',
   subject: '',
-  message: ''
+  message: '',
 })
 
 onMounted(() => {
-  setTimeout(() => visible.value = true, 100)
+  setTimeout(() => (visible.value = true), 100)
 })
 
 const validateField = (field: keyof typeof formData, value: string) => {
   errors[field] = ''
-  
+
   switch (field) {
     case 'name':
       if (value.length < 2) errors[field] = t('form.errors.nameRequired')
@@ -40,227 +41,266 @@ const validateField = (field: keyof typeof formData, value: string) => {
   }
 }
 
+const clearForm = () => {
+  Object.assign(formData, { name: '', email: '', subject: '', message: '' })
+  Object.keys(errors).forEach((key) => (errors[key] = ''))
+}
+
 async function onSubmit(event: Event) {
   event.preventDefault()
-  const form = event.target as HTMLFormElement
-  
-  Object.keys(formData).forEach(key => 
+
+  // Validate all fields
+  Object.keys(formData).forEach((key) =>
     validateField(key as keyof typeof formData, formData[key as keyof typeof formData])
   )
-  
-  if (Object.values(errors).some(error => error)) return
-  
+
+  if (Object.values(errors).some((error) => error)) return
+
   formState.value = 'loading'
-  
+
   try {
-    const formDataObj = new FormData(form)
-    const response = await fetch('https://formspree.io/f/xeognayr', {
+    const response = await fetch('/api/contact', {
       method: 'POST',
-      body: formDataObj,
-      headers: { 'Accept': 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
     })
-    
+
     if (response.ok) {
       formState.value = 'success'
-      form.reset()
-      Object.assign(formData, { name: '', email: '', subject: '', message: '' })
-      
-      setTimeout(() => formState.value = 'idle', 3000)
+      clearForm()
+      setTimeout(() => (formState.value = 'idle'), 4000)
     } else {
-      throw new Error('Network response was not ok')
+      throw new Error('Failed to send message')
     }
   } catch (error) {
     formState.value = 'error'
-    setTimeout(() => formState.value = 'idle', 3000)
+    setTimeout(() => (formState.value = 'idle'), 4000)
   }
 }
 </script>
 
 <template>
-  <section class="py-24 px-4">
-    <div 
-      class="max-w-xl mx-auto backdrop-blur-lg bg-white/30 p-8 rounded-2xl shadow-lg border border-white/20 relative overflow-hidden transition-all duration-700 transform"
-      :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
-    >
-      <div 
-        class="absolute inset-0 bg-gradient-to-br transition-all duration-500 -z-10"
-        :class="{
-          'from-white/50 via-white/30 to-transparent': formState === 'idle',
-          'from-blue-100/60 via-blue-50/40 to-transparent': formState === 'loading',
-          'from-green-100/60 via-emerald-50/40 to-transparent': formState === 'success',
-          'from-red-100/60 via-pink-50/40 to-transparent': formState === 'error',
-        }"
-      />
-      
-      <div class="text-center mb-8">
-        <h2 class="text-2xl font-bold mb-2 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-          {{ $t('form.title') }}
-        </h2>
-        <p class="text-gray-500">{{ $t('form.subtitle') }}</p>
-      </div>
-
-      <div v-if="formState !== 'idle'" class="mb-6 p-4 rounded-lg flex items-center gap-3 transition-all duration-300">
-        <div v-if="formState === 'loading'" class="bg-blue-50/80 border border-blue-200/60 text-blue-700 w-full">
-          <div class="flex items-center gap-3">
-            <div class="w-5 h-5 border-2 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-            {{ $t('form.states.sending') }}
-          </div>
-        </div>
-        
-        <div v-if="formState === 'success'" class="bg-green-50/80 border border-green-200/60 text-green-700 w-full">
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-            </svg>
-            {{ $t('form.states.success') }}
-          </div>
-        </div>
-        
-        <div v-if="formState === 'error'" class="bg-red-50/80 border border-red-200/60 text-red-700 w-full">
-          <div class="flex items-center gap-3">
-            <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-            {{ $t('form.states.error') }}
-          </div>
-        </div>
-      </div>
-
-      <form
-        @submit="onSubmit"
-        class="space-y-6"
-        :class="{ 'pointer-events-none opacity-60': formState === 'loading' }"
+  <section class="py-20 md:py-32 px-6">
+    <div class="max-w-xl mx-auto">
+      <!-- Section Header -->
+      <div
+        class="text-center mb-12 opacity-0 animate-slide-up"
+        style="animation-delay: 0.1s"
       >
-        <div class="space-y-1">
-          <div class="relative">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          {{ t('form.title') }}
+        </h2>
+        <p class="text-lg text-gray-500 dark:text-gray-400">
+          {{ t('form.subtitle') }}
+        </p>
+      </div>
+
+      <!-- Form Card -->
+      <div
+        class="bg-white dark:bg-gray-900/50 rounded-2xl p-6 sm:p-8 shadow-lg
+               border border-gray-100 dark:border-gray-800
+               transition-all duration-700 transform"
+        :class="visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'"
+      >
+        <!-- Status Messages -->
+        <Transition
+          enter-active-class="transition-all duration-300 ease-out"
+          enter-from-class="opacity-0 -translate-y-2"
+          enter-to-class="opacity-100 translate-y-0"
+          leave-active-class="transition-all duration-200 ease-in"
+          leave-from-class="opacity-100 translate-y-0"
+          leave-to-class="opacity-0 -translate-y-2"
+        >
+          <div v-if="formState !== 'idle'" class="mb-6">
+            <!-- Loading -->
+            <div
+              v-if="formState === 'loading'"
+              class="flex items-center gap-3 p-4 rounded-xl bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300"
+            >
+              <div class="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+              <span>{{ t('form.states.sending') }}</span>
+            </div>
+
+            <!-- Success -->
+            <div
+              v-if="formState === 'success'"
+              class="flex items-center gap-3 p-4 rounded-xl bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              <span>{{ t('form.states.success') }}</span>
+            </div>
+
+            <!-- Error -->
+            <div
+              v-if="formState === 'error'"
+              class="flex items-center gap-3 p-4 rounded-xl bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+              <span>{{ t('form.states.error') }}</span>
+            </div>
+          </div>
+        </Transition>
+
+        <!-- Form -->
+        <form
+          @submit="onSubmit"
+          class="space-y-5"
+          :class="{ 'pointer-events-none opacity-50': formState === 'loading' }"
+        >
+          <!-- Name -->
+          <div class="space-y-1.5">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              {{ t('form.name') }}
+            </label>
             <input
               type="text"
               name="name"
               v-model="formData.name"
-              :placeholder="$t('form.name')"
+              :placeholder="t('form.name')"
               required
-              aria-label="Nom complet"
               @blur="validateField('name', formData.name)"
               @input="errors.name = ''"
-              class="w-full rounded-lg px-4 py-3 pr-10 bg-white/90 backdrop-blur-sm border shadow-sm transition-all duration-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-md"
-              :class="{
-                'border-white/60 focus:ring focus:ring-violet-200/50 focus:border-violet-300': !errors.name,
-                'border-red-300 focus:ring focus:ring-red-200/50 focus:border-red-400': errors.name
-              }"
+              class="w-full rounded-xl px-4 py-3 bg-gray-50 dark:bg-gray-800
+                     border border-gray-200 dark:border-gray-700
+                     text-gray-900 dark:text-white placeholder-gray-400
+                     transition-all duration-200
+                     focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              :class="{ 'border-red-300 dark:border-red-500': errors.name }"
             />
-            <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-              </svg>
-            </div>
+            <p v-if="errors.name" class="text-sm text-red-500 mt-1">{{ errors.name }}</p>
           </div>
-          <p v-if="errors.name" class="text-sm text-red-600 ml-1 animate-pulse">{{ errors.name }}</p>
-        </div>
-        <div class="space-y-1">
-          <div class="relative">
+
+          <!-- Email -->
+          <div class="space-y-1.5">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              {{ t('form.email') }}
+            </label>
             <input
               type="email"
               name="email"
               v-model="formData.email"
-              :placeholder="$t('form.email')"
+              :placeholder="t('form.email')"
               required
-              aria-label="Adresse email"
               @blur="validateField('email', formData.email)"
               @input="errors.email = ''"
-              class="w-full rounded-lg px-4 py-3 pr-10 bg-white/90 backdrop-blur-sm border shadow-sm transition-all duration-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-md"
-              :class="{
-                'border-white/60 focus:ring focus:ring-blue-200/50 focus:border-blue-300': !errors.email,
-                'border-red-300 focus:ring focus:ring-red-200/50 focus:border-red-400': errors.email
-              }"
+              class="w-full rounded-xl px-4 py-3 bg-gray-50 dark:bg-gray-800
+                     border border-gray-200 dark:border-gray-700
+                     text-gray-900 dark:text-white placeholder-gray-400
+                     transition-all duration-200
+                     focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              :class="{ 'border-red-300 dark:border-red-500': errors.email }"
             />
-            <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-              </svg>
-            </div>
+            <p v-if="errors.email" class="text-sm text-red-500 mt-1">{{ errors.email }}</p>
           </div>
-          <p v-if="errors.email" class="text-sm text-red-600 ml-1 animate-pulse">{{ errors.email }}</p>
-        </div>
-        <div class="space-y-1">
-          <div class="relative">
+
+          <!-- Subject -->
+          <div class="space-y-1.5">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              {{ t('form.subject') }}
+            </label>
             <input
               type="text"
               name="subject"
               v-model="formData.subject"
-              :placeholder="$t('form.subject')"
+              :placeholder="t('form.subject')"
               required
-              aria-label="Sujet du message"
               @blur="validateField('subject', formData.subject)"
               @input="errors.subject = ''"
-              class="w-full rounded-lg px-4 py-3 pr-10 bg-white/90 backdrop-blur-sm border shadow-sm transition-all duration-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-md"
-              :class="{
-                'border-white/60 focus:ring focus:ring-amber-200/50 focus:border-amber-300': !errors.subject,
-                'border-red-300 focus:ring focus:ring-red-200/50 focus:border-red-400': errors.subject
-              }"
+              class="w-full rounded-xl px-4 py-3 bg-gray-50 dark:bg-gray-800
+                     border border-gray-200 dark:border-gray-700
+                     text-gray-900 dark:text-white placeholder-gray-400
+                     transition-all duration-200
+                     focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              :class="{ 'border-red-300 dark:border-red-500': errors.subject }"
             />
-            <div class="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2h4a1 1 0 011 1v1a1 1 0 01-1 1h-1v12a2 2 0 01-2 2H6a2 2 0 01-2-2V7H3a1 1 0 01-1-1V5a1 1 0 011-1h4z"></path>
-              </svg>
-            </div>
+            <p v-if="errors.subject" class="text-sm text-red-500 mt-1">{{ errors.subject }}</p>
           </div>
-          <p v-if="errors.subject" class="text-sm text-red-600 ml-1 animate-pulse">{{ errors.subject }}</p>
-        </div>
-        <div class="space-y-1">
-          <div class="relative">
+
+          <!-- Message -->
+          <div class="space-y-1.5">
+            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+              {{ t('form.message') }}
+            </label>
             <textarea
               name="message"
               v-model="formData.message"
-              :placeholder="$t('form.message')"
+              :placeholder="t('form.message')"
               required
-              aria-label="Message"
+              rows="5"
               @blur="validateField('message', formData.message)"
               @input="errors.message = ''"
-              class="w-full rounded-lg px-4 py-3 pr-10 bg-white/90 backdrop-blur-sm h-40 resize-none border shadow-sm transition-all duration-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:bg-white focus:shadow-md"
-              :class="{
-                'border-white/60 focus:ring focus:ring-green-200/50 focus:border-green-300': !errors.message,
-                'border-red-300 focus:ring focus:ring-red-200/50 focus:border-red-400': errors.message
-              }"
+              class="w-full rounded-xl px-4 py-3 bg-gray-50 dark:bg-gray-800
+                     border border-gray-200 dark:border-gray-700
+                     text-gray-900 dark:text-white placeholder-gray-400
+                     resize-none transition-all duration-200
+                     focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
+              :class="{ 'border-red-300 dark:border-red-500': errors.message }"
             />
-            <!-- Icône message -->
-            <div class="absolute right-3 top-3">
-              <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
-              </svg>
-            </div>
+            <p v-if="errors.message" class="text-sm text-red-500 mt-1">{{ errors.message }}</p>
           </div>
-          <p v-if="errors.message" class="text-sm text-red-600 ml-1 animate-pulse">{{ errors.message }}</p>
-        </div>
 
-        <div class="flex justify-end gap-4 mt-8">
-          <button
-            type="reset"
-            @click="Object.assign(formData, { name: '', email: '', subject: '', message: '' }); Object.keys(errors).forEach(key => errors[key] = '')"
-            class="px-6 py-3 bg-gradient-to-r from-gray-100 to-gray-200 backdrop-blur-sm text-gray-700 rounded-lg border border-gray-300/60 hover:from-gray-200 hover:to-gray-300 hover:shadow-md transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-gray-300/50 disabled:opacity-50 disabled:cursor-not-allowed"
-            :disabled="formState === 'loading'"
-          >
-            <div class="flex items-center gap-2">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-              </svg>
-              {{ $t('form.clear') }}
-            </div>
-          </button>
-          <button
-            type="submit"
-            class="px-6 py-3 bg-black text-white rounded-lg hover:shadow-lg hover:scale-[1.02] transition-all duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-300/50 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            :disabled="formState === 'loading'"
-          >
-            <div class="flex items-center gap-2">
-              <div v-if="formState === 'loading'" class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-              <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
-              </svg>
-              {{ formState === 'loading' ? $t('form.states.sending') : $t('form.send') }}
-            </div>
-          </button>
-        </div>
-      </form>
+          <!-- Actions -->
+          <div class="flex justify-end gap-3 pt-4">
+            <button
+              type="button"
+              @click="clearForm"
+              :disabled="formState === 'loading'"
+              class="px-5 py-2.5 rounded-xl text-gray-600 dark:text-gray-400
+                     hover:bg-gray-100 dark:hover:bg-gray-800
+                     transition-colors duration-200
+                     disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {{ t('form.clear') }}
+            </button>
+            <button
+              type="submit"
+              :disabled="formState === 'loading'"
+              class="px-6 py-2.5 rounded-xl bg-gray-900 dark:bg-white
+                     text-white dark:text-gray-900 font-medium
+                     hover:bg-gray-800 dark:hover:bg-gray-100
+                     hover:shadow-lg hover:scale-[1.02]
+                     active:scale-[0.98]
+                     transition-all duration-200
+                     disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+            >
+              <span class="flex items-center gap-2">
+                <div
+                  v-if="formState === 'loading'"
+                  class="w-4 h-4 border-2 border-white dark:border-gray-900 border-t-transparent rounded-full animate-spin"
+                />
+                <svg v-else class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                {{ t('form.send') }}
+              </span>
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Email direct link -->
+      <p class="text-center mt-6 text-sm text-gray-500 dark:text-gray-400">
+        {{ t('gcuSection.contactText')?.split(':')[0] || 'Or email us directly at' }}:
+        <a
+          href="mailto:contact@keepio.fr"
+          class="text-indigo-600 dark:text-indigo-400 hover:underline"
+        >
+          contact@keepio.fr
+        </a>
+      </p>
     </div>
   </section>
 </template>
+
+<style scoped>
+@media (prefers-reduced-motion: reduce) {
+  .animate-spin,
+  .animate-slide-up {
+    animation: none;
+  }
+}
+</style>

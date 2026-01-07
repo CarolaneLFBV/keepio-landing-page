@@ -6,9 +6,9 @@
   "features": "Features",
   "upcoming": "Upcoming",
   "contact": "Contact",
-  "gcu": "GCU",
+  "gcu": "Terms",
   "rights": "All rights reserved.",
-  "gcuTitle": "General Conditions of Use",
+  "gcuTitle": "Terms of Use",
   "portfolio": "Portfolio",
   "projectTitle": "Organize your projects",
   "projectText": "Structure your ideas into organized projects",
@@ -44,48 +44,84 @@
     "otherFeaturesText": "More exciting features coming in future updates"
   },
   "gcuSection": {
-    "lastUpdated": "Last updated: Jul 7, 2025",
-    "thankYou": "Thank you for using Keepio. Your privacy is our top priority.",
-    "dataCollectedTitle": "Data Collected",
-    "dataCollected": "We do not collect any personally identifiable data (name, email, etc.). The app uses only :",
-    "dataCollectionList": [
-      "The names of projects, tags, tasks and notes you create",
-      "Their status, creation date and progress"
+    "lastUpdated": "Last updated: January 7, 2026",
+    "intro": "By using the Keepio app, you agree to these Terms of Use. Please read them carefully before using the app.",
+    "accessTitle": "1. App Access",
+    "accessText": "The app is available for download on the App Store for iOS devices. Basic features are free to use without creating an account.",
+    "premiumTitle": "2. Premium Subscription",
+    "premiumIntro": "Keepio offers optional premium features through auto-renewable subscriptions:",
+    "premiumFeatures": [
+      "Keepio Premium Monthly: Access to all premium features for one month",
+      "Keepio Premium Yearly: Access to all premium features for one year at a discounted rate"
     ],
-    "storageTitle": "Data Storage",
-    "storageText": "Your data is stored locally on your device and in your private iCloud via CloudKit. We cannot access or share your information.",
-    "rightsTitle": "Your Rights",
-    "rightsText": "In compliance with GDPR, you can:",
-    "rightsList": [
-      "Delete your data at any time from the app",
-      "Disable iCloud synchronization via your iOS settings"
+    "premiumBilling": "Subscription Details:",
+    "premiumBillingList": [
+      "Payment will be charged to your Apple ID account at confirmation of purchase",
+      "Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period",
+      "Your account will be charged for renewal within 24 hours prior to the end of the current period",
+      "You can manage and cancel your subscriptions by going to your App Store account settings after purchase",
+      "Any unused portion of a free trial period, if offered, will be forfeited when you purchase a subscription"
     ],
-    "contactTitle": "Contact",
-    "contactText": "For any questions, please use the contact form on our website."
+    "intellectualTitle": "3. Intellectual Property",
+    "intellectualText": "All content, source code, designs, and visuals in Keepio are the exclusive property of the developer. Any unauthorized reproduction, modification, or distribution is strictly prohibited.",
+    "prohibitedTitle": "4. Prohibited Use",
+    "prohibitedText": "You agree not to:",
+    "prohibitedList": [
+      "Decompile, reverse engineer, or modify the app",
+      "Use the app for any illegal, harmful, or unauthorized purposes",
+      "Attempt to access another user's data or interfere with the app's functionality"
+    ],
+    "liabilityTitle": "5. Limitation of Liability",
+    "liabilityText": "To the maximum extent permitted by law, we are not liable for:",
+    "liabilityList": [
+      "Data loss due to iCloud synchronization issues or device failures",
+      "App malfunctions, interruptions, or temporary unavailability",
+      "Any indirect, incidental, or consequential damages arising from your use of the app"
+    ],
+    "modificationsTitle": "6. Modifications",
+    "modificationsText": "We reserve the right to modify these Terms of Use at any time. Continued use of the app after changes constitutes acceptance of the new terms.",
+    "lawTitle": "7. Applicable Law",
+    "lawText": "These terms are governed by French law. Any disputes will be subject to the exclusive jurisdiction of the courts in France.",
+    "contactTitle": "8. Contact",
+    "contactText": "For questions about these Terms of Use, please contact us at: contact{'@'}keepio.fr or use the contact form on our website."
   },
   "privacy": "Privacy",
   "privacySection": {
-    "lastUpdated": "Last updated: Jul 7, 2025",
-    "title": "Terms of Use",
-    "thanks": "By using the Keepr (or Keepio) app, you agree to these Terms of Use.",
-    "accessTitle": "App Access",
-    "accessText": "The app is free and accessible without creating an account. It requires an iOS compatible device.",
-    "intellectualTitle": "Intellectual Property",
-    "intellectualText": "All content, source code, and visuals are the exclusive property of the developer. Any reproduction or modification is prohibited.",
-    "prohibitedTitle": "Prohibited Use",
-    "prohibitedText": "It is prohibited to:",
-    "prohibitedList": [
-      "Decompile or modify the app",
-      "Use it for illegal or harmful purposes",
-      "Attempt to access another user's data"
+    "lastUpdated": "Last updated: January 7, 2026",
+    "title": "Privacy Policy",
+    "intro": "Your privacy is important to us. This Privacy Policy explains how Keepio collects, uses, and protects your information.",
+    "dataCollectedTitle": "1. Information We Collect",
+    "dataCollectedIntro": "Keepio does not collect any personally identifiable information (name, email, etc.). The app only stores:",
+    "dataCollectedList": [
+      "Content you create: projects, tasks, notes, and tags",
+      "Metadata: creation dates, progress status, and organizational settings"
     ],
-    "liabilityTitle": "Liability",
-    "liabilityText": "We are not responsible for:",
-    "liabilityList": [
-      "Data loss through iCloud",
-      "App malfunction"
+    "storageTitle": "2. Data Storage",
+    "storageText": "Your data is stored locally on your device and, if enabled, synchronized via your private iCloud account using Apple's CloudKit technology. We do not have access to your iCloud data.",
+    "thirdPartyTitle": "3. Third-Party Services",
+    "thirdPartyText": "Keepio uses the following third-party services:",
+    "thirdPartyList": [
+      "Apple CloudKit: For optional iCloud synchronization across your devices",
+      "Apple App Store: For processing premium subscription payments"
     ],
-    "lawTitle": "Applicable Law",
-    "lawText": "These terms are subject to French law. In case of dispute, the competent courts will be those of the developer's place of residence."
+    "thirdPartyNote": "We do not share your personal information with any other third parties.",
+    "analyticsTitle": "4. Analytics",
+    "analyticsText": "Keepio does not use any third-party analytics or tracking services. We do not track your usage or behavior within the app.",
+    "rightsTitle": "5. Your Rights (GDPR)",
+    "rightsText": "In compliance with GDPR and applicable privacy laws, you have the right to:",
+    "rightsList": [
+      "Access your data at any time within the app",
+      "Delete all your data directly from the app",
+      "Disable iCloud synchronization via your iOS Settings",
+      "Request information about your data by contacting us"
+    ],
+    "childrenTitle": "6. Children's Privacy",
+    "childrenText": "Keepio does not knowingly collect information from children under 13. The app is designed for general audiences.",
+    "securityTitle": "7. Data Security",
+    "securityText": "We take reasonable measures to protect your data. All data synchronized via iCloud is encrypted using Apple's security protocols.",
+    "changesTitle": "8. Changes to This Policy",
+    "changesText": "We may update this Privacy Policy from time to time. We will notify you of any significant changes through the app or our website.",
+    "contactTitle": "9. Contact Us",
+    "contactText": "If you have any questions about this Privacy Policy, please contact us at: contact{'@'}keepio.fr"
   }
 }

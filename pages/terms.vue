@@ -3,7 +3,7 @@ import { useI18n } from '#imports';
 import BackgroundView from '~/components/app/BackgroundView.vue';
 import Footer from '~/components/app/Footer.vue';
 const { t } = useI18n();
-</script>   
+</script>
 
 <template>
     <section class="relative scroll-smooth">
@@ -21,55 +21,107 @@ const { t } = useI18n();
       <BackgroundView class="fixed top-0 left-0 w-full h-full z-[-1]"/>
 
       <div class="max-w-4xl mx-auto px-6 pt-24 pb-16">
-        <h1 class="text-3xl font-bold mb-8">{{ t("gcuTitle") }}</h1>
-        
-        <div class="space-y-12 text-gray-800">
+        <h1 class="text-3xl font-bold mb-4">{{ t("gcuTitle") }}</h1>
+
+        <div class="space-y-8 text-gray-800">
           <div class="text-sm text-gray-500 mb-8">
             {{ t("gcuSection.lastUpdated") }}
           </div>
 
           <p class="text-gray-600">
-            {{ t("gcuSection.thankYou") }}
+            {{ t("gcuSection.intro") }}
           </p>
 
+          <!-- 1. App Access -->
           <section>
-            <h2 class="text-xl font-semibold mb-4">{{ t("gcuSection.dataCollectedTitle") }}</h2>
-            <p class="text-gray-600 mb-4">
-                {{ t("gcuSection.dataCollected") }}
-            </p>
-            <ul class="list-disc pl-6 space-y-2 text-gray-600">
-              <li> {{ t("gcuSection.dataCollectionList.0") }}</li>
-              <li> {{ t("gcuSection.dataCollectionList.1") }}</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 class="text-xl font-semibold mb-4">{{ t("gcuSection.storageTitle") }}</h2>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.accessTitle") }}</h2>
             <p class="text-gray-600">
-              {{ t("gcuSection.storageText") }}
+              {{ t("gcuSection.accessText") }}
             </p>
           </section>
 
+          <!-- 2. Premium Subscription -->
           <section>
-            <h2 class="text-xl font-semibold mb-4">{{ t("gcuSection.rightsTitle") }}</h2>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.premiumTitle") }}</h2>
             <p class="text-gray-600 mb-4">
-              {{ t("gcuSection.rightsText") }}
+              {{ t("gcuSection.premiumIntro") }}
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-600 mb-4">
+              <li>{{ t("gcuSection.premiumFeatures[0]") }}</li>
+              <li>{{ t("gcuSection.premiumFeatures[1]") }}</li>
+            </ul>
+            <p class="text-gray-600 font-medium mb-2">
+              {{ t("gcuSection.premiumBilling") }}
             </p>
             <ul class="list-disc pl-6 space-y-2 text-gray-600">
-              <li>{{ t("gcuSection.rightsList.0") }}</li>
-              <li>{{ t("gcuSection.rightsList.1") }}</li>
+              <li>{{ t("gcuSection.premiumBillingList[0]") }}</li>
+              <li>{{ t("gcuSection.premiumBillingList[1]") }}</li>
+              <li>{{ t("gcuSection.premiumBillingList[2]") }}</li>
+              <li>{{ t("gcuSection.premiumBillingList[3]") }}</li>
+              <li>{{ t("gcuSection.premiumBillingList[4]") }}</li>
             </ul>
           </section>
 
+          <!-- 3. Intellectual Property -->
           <section>
-            <h2 class="text-xl font-semibold mb-4">{{ t("gcuSection.contactTitle") }}</h2>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.intellectualTitle") }}</h2>
+            <p class="text-gray-600">
+              {{ t("gcuSection.intellectualText") }}
+            </p>
+          </section>
+
+          <!-- 4. Prohibited Use -->
+          <section>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.prohibitedTitle") }}</h2>
+            <p class="text-gray-600 mb-2">
+              {{ t("gcuSection.prohibitedText") }}
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-600">
+              <li>{{ t("gcuSection.prohibitedList[0]") }}</li>
+              <li>{{ t("gcuSection.prohibitedList[1]") }}</li>
+              <li>{{ t("gcuSection.prohibitedList[2]") }}</li>
+            </ul>
+          </section>
+
+          <!-- 5. Limitation of Liability -->
+          <section>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.liabilityTitle") }}</h2>
+            <p class="text-gray-600 mb-2">
+              {{ t("gcuSection.liabilityText") }}
+            </p>
+            <ul class="list-disc pl-6 space-y-2 text-gray-600">
+              <li>{{ t("gcuSection.liabilityList[0]") }}</li>
+              <li>{{ t("gcuSection.liabilityList[1]") }}</li>
+              <li>{{ t("gcuSection.liabilityList[2]") }}</li>
+            </ul>
+          </section>
+
+          <!-- 6. Modifications -->
+          <section>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.modificationsTitle") }}</h2>
+            <p class="text-gray-600">
+              {{ t("gcuSection.modificationsText") }}
+            </p>
+          </section>
+
+          <!-- 7. Applicable Law -->
+          <section>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.lawTitle") }}</h2>
+            <p class="text-gray-600">
+              {{ t("gcuSection.lawText") }}
+            </p>
+          </section>
+
+          <!-- 8. Contact -->
+          <section>
+            <h2 class="text-xl font-semibold mb-3">{{ t("gcuSection.contactTitle") }}</h2>
             <p class="text-gray-600">
               {{ t("gcuSection.contactText") }}
             </p>
           </section>
         </div>
       </div>
-    </section>
 
-    <Footer/>
+      <Footer/>
+    </section>
 </template>

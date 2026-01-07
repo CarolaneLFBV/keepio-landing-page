@@ -20,53 +20,89 @@ const { t } = useI18n();
 
     <BackgroundView class="fixed top-0 left-0 w-full h-full z-[-1]"/>
 
-        <div class="max-w-4xl mx-auto px-6 pt-24 pb-16">
-          <h1 class="text-3xl font-bold mb-4">{{ t('privacySection.title') }}</h1>
-          
-          <div class="space-y-12 text-gray-800">
-          <div class="text-sm text-gray-500 mb-8">
-            {{ t("gcuSection.lastUpdated") }}
-          </div>
-        <div>
-          <p class="text-gray-800">{{ t('privacySection.thanks') }}</p>
+    <div class="max-w-4xl mx-auto px-6 pt-24 pb-16">
+      <h1 class="text-3xl font-bold mb-4">{{ t('privacySection.title') }}</h1>
+
+      <div class="space-y-8 text-gray-800">
+        <div class="text-sm text-gray-500 mb-8">
+          {{ t("privacySection.lastUpdated") }}
         </div>
 
-        <div>
-          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.accessTitle') }}</h2>
-          <p>{{ t('privacySection.accessText') }}</p>
-        </div>
+        <p class="text-gray-600">
+          {{ t('privacySection.intro') }}
+        </p>
 
-        <div>
-          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.intellectualTitle') }}</h2>
-          <p>{{ t('privacySection.intellectualText') }}</p>
-        </div>
-
-        <div>
-          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.prohibitedTitle') }}</h2>
-          <p class="mb-2">{{ t('privacySection.prohibitedText') }}</p>
-          <ul class="list-disc pl-6 space-y-1">
-            <li>{{ t('privacySection.prohibitedList.0') }}</li>
-            <li>{{ t('privacySection.prohibitedList.1') }}</li>
+        <!-- 1. Information We Collect -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.dataCollectedTitle') }}</h2>
+          <p class="text-gray-600 mb-2">{{ t('privacySection.dataCollectedIntro') }}</p>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600">
+            <li>{{ t('privacySection.dataCollectedList[0]') }}</li>
+            <li>{{ t('privacySection.dataCollectedList[1]') }}</li>
           </ul>
-        </div>
+        </section>
 
-        <div>
-          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.liabilityTitle') }}</h2>
-          <p class="mb-2">{{ t('privacySection.liabilityText') }}</p>
-          <ul class="list-disc pl-6 space-y-1">
-            <li>{{ t('privacySection.liabilityList.0') }}</li>
-            <li>{{ t('privacySection.liabilityList.1') }}</li>
+        <!-- 2. Data Storage -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.storageTitle') }}</h2>
+          <p class="text-gray-600">{{ t('privacySection.storageText') }}</p>
+        </section>
+
+        <!-- 3. Third-Party Services -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.thirdPartyTitle') }}</h2>
+          <p class="text-gray-600 mb-2">{{ t('privacySection.thirdPartyText') }}</p>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600 mb-2">
+            <li>{{ t('privacySection.thirdPartyList[0]') }}</li>
+            <li>{{ t('privacySection.thirdPartyList[1]') }}</li>
           </ul>
-        </div>
+          <p class="text-gray-600">{{ t('privacySection.thirdPartyNote') }}</p>
+        </section>
 
-        <div>
-          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.lawTitle') }}</h2>
-          <p>{{ t('privacySection.lawText') }}</p>
-        </div>
+        <!-- 4. Analytics -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.analyticsTitle') }}</h2>
+          <p class="text-gray-600">{{ t('privacySection.analyticsText') }}</p>
+        </section>
 
-        </div>
+        <!-- 5. Your Rights (GDPR) -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.rightsTitle') }}</h2>
+          <p class="text-gray-600 mb-2">{{ t('privacySection.rightsText') }}</p>
+          <ul class="list-disc pl-6 space-y-1 text-gray-600">
+            <li>{{ t('privacySection.rightsList[0]') }}</li>
+            <li>{{ t('privacySection.rightsList[1]') }}</li>
+            <li>{{ t('privacySection.rightsList[2]') }}</li>
+            <li>{{ t('privacySection.rightsList[3]') }}</li>
+          </ul>
+        </section>
+
+        <!-- 6. Children's Privacy -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.childrenTitle') }}</h2>
+          <p class="text-gray-600">{{ t('privacySection.childrenText') }}</p>
+        </section>
+
+        <!-- 7. Data Security -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.securityTitle') }}</h2>
+          <p class="text-gray-600">{{ t('privacySection.securityText') }}</p>
+        </section>
+
+        <!-- 8. Changes to This Policy -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.changesTitle') }}</h2>
+          <p class="text-gray-600">{{ t('privacySection.changesText') }}</p>
+        </section>
+
+        <!-- 9. Contact Us -->
+        <section>
+          <h2 class="text-xl font-semibold mb-3">{{ t('privacySection.contactTitle') }}</h2>
+          <p class="text-gray-600">{{ t('privacySection.contactText') }}</p>
+        </section>
       </div>
-    <Footer/>
+    </div>
 
+    <Footer/>
   </section>
 </template>

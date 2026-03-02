@@ -1,0 +1,259 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "download": "Get the app"
+  },
+  "hero": {
+    "title": "The way you work is about to",
+    "titleAccent": "change",
+    "subtitle": "No account. No clutter. No compromises.",
+    "cta": "Download on the App Store",
+    "ctaSecondary": "Discover why"
+  },
+  "features": {
+    "title": "Built different",
+    "subtitle": "Every detail obsessively crafted. Every feature designed to make you unstoppable.",
+    "project": {
+      "title": "Projects that make sense",
+      "text": "Turn chaos into clarity. Structure any idea into a project that actually moves forward."
+    },
+    "task": {
+      "title": "Tasks, reimagined",
+      "text": "Smart tagging, instant organization. The task system that thinks the way you do."
+    },
+    "note": {
+      "title": "Capture everything",
+      "text": "Ideas don't wait. Grab them instantly with notes that are as flexible as your mind."
+    },
+    "graph": {
+      "title": "See your momentum",
+      "text": "Beautiful charts and stats that turn your progress into motivation. Watch yourself level up."
+    },
+    "style": {
+      "title": "Obsessively minimal",
+      "text": "No bloat. No distractions. An interface so clean it disappears — leaving only your work."
+    },
+    "sync": {
+      "title": "Everywhere you are",
+      "text": "iPhone, iPad, Mac — your entire world synced via iCloud. Start anywhere, finish anywhere."
+    }
+  },
+  "pricing": {
+    "title": "Invest in yourself",
+    "subtitle": "Start free. Go further when you're ready to unlock your full potential.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "free": {
+      "name": "Free",
+      "price": "0",
+      "description": "More than enough to transform how you work",
+      "cta": "Get started free",
+      "features": [
+        "Unlimited projects",
+        "Unlimited tasks & notes",
+        "Smart tags & organization",
+        "Beautiful minimalist interface",
+        "iCloud sync across devices"
+      ]
+    },
+    "premium": {
+      "name": "Premium",
+      "badge": "Full power",
+      "monthlyPrice": "5.99",
+      "yearlyPrice": "44.99",
+      "yearlySaving": "~3.75€/month — save 37%",
+      "description": "For those who refuse to settle",
+      "cta": "Unlock everything",
+      "includes": "FREE+",
+      "features": [
+        "Advanced analytics & insights",
+        "Pomodoro and stats",
+        "Sync calendar",
+        "More in-app shortcuts and widgets",
+        "Every future feature, included"
+      ]
+    }
+  },
+  "faq": {
+    "title": "Questions?",
+    "subtitle": "Straight answers. No BS.",
+    "items": [
+      {
+        "question": "Is Keepio really free?",
+        "answer": "Yes. Download it, use it, love it — no strings attached. Projects, tasks, notes, iCloud sync, all free. Premium exists for power users who want to go even further."
+      },
+      {
+        "question": "Do I need to create an account?",
+        "answer": "Nope. Zero account, zero sign-up, zero friction. Open the app and start working. Your data lives on your device and your private iCloud — we never see a single byte."
+      },
+      {
+        "question": "How does sync work?",
+        "answer": "Keepio uses Apple's CloudKit — the same technology behind iCloud. Enable it once, and everything stays perfectly in sync across all your Apple devices. It just works."
+      },
+      {
+        "question": "Is my data private?",
+        "answer": "Completely. No trackers, no analytics, no data collection. Your content is encrypted via iCloud and stored locally. We literally cannot access your data. Privacy isn't a feature — it's a principle."
+      },
+      {
+        "question": "Can I cancel Premium anytime?",
+        "answer": "Of course. Cancel whenever you want from your App Store settings. No hoops, no guilt trips. Your premium features stay active until the end of your billing period."
+      },
+      {
+        "question": "What devices are supported?",
+        "answer": "iPhone and iPad running iOS 26+. Your entire workflow, synced seamlessly across every Apple device you own."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's talk",
+    "subtitle": "Bug report, feature idea, or just want to say you love the app? We read every message.",
+    "name": "Name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending...",
+    "success": "Message sent! We'll get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "errors": {
+      "nameRequired": "Please enter your name",
+      "emailInvalid": "Please enter a valid email",
+      "subjectRequired": "Please enter a subject",
+      "messageRequired": "Message must be at least 10 characters"
+    }
+  },
+  "downloadCta": {
+    "title": "Ready to change everything?",
+    "subtitle": "Download Keepio for free and take control of your workflow.",
+    "note": "Free on iOS. No account required."
+  },
+  "footer": {
+    "rights": "All rights reserved.",
+    "terms": "Terms",
+    "privacy": "Privacy",
+    "contact": "Contact",
+    "madeBy": "Built by"
+  },
+  "terms": {
+    "title": "Terms of Use",
+    "lastUpdated": "Last updated: January 7, 2026",
+    "intro": "By using the Keepio app, you agree to these Terms of Use. Please read them carefully before using the app.",
+    "sections": [
+      {
+        "title": "1. App Access",
+        "text": "The app is available for download on the App Store for iOS devices. Basic features are free to use without creating an account."
+      },
+      {
+        "title": "2. Premium Subscription",
+        "text": "Keepio offers optional premium features through auto-renewable subscriptions:",
+        "list": [
+          "Keepio Premium Monthly: Access to all premium features for one month",
+          "Keepio Premium Yearly: Access to all premium features for one year at a discounted rate"
+        ],
+        "extra": "Subscription Details:",
+        "extraList": [
+          "Payment will be charged to your Apple ID account at confirmation of purchase",
+          "Subscription automatically renews unless auto-renew is turned off at least 24 hours before the end of the current period",
+          "Your account will be charged for renewal within 24 hours prior to the end of the current period",
+          "You can manage and cancel your subscriptions by going to your App Store account settings after purchase",
+          "Any unused portion of a free trial period, if offered, will be forfeited when you purchase a subscription"
+        ]
+      },
+      {
+        "title": "3. Intellectual Property",
+        "text": "All content, source code, designs, and visuals in Keepio are the exclusive property of the developer. Any unauthorized reproduction, modification, or distribution is strictly prohibited."
+      },
+      {
+        "title": "4. Prohibited Use",
+        "text": "You agree not to:",
+        "list": [
+          "Decompile, reverse engineer, or modify the app",
+          "Use the app for any illegal, harmful, or unauthorized purposes",
+          "Attempt to access another user's data or interfere with the app's functionality"
+        ]
+      },
+      {
+        "title": "5. Limitation of Liability",
+        "text": "To the maximum extent permitted by law, we are not liable for:",
+        "list": [
+          "Data loss due to iCloud synchronization issues or device failures",
+          "App malfunctions, interruptions, or temporary unavailability",
+          "Any indirect, incidental, or consequential damages arising from your use of the app"
+        ]
+      },
+      {
+        "title": "6. Modifications",
+        "text": "We reserve the right to modify these Terms of Use at any time. Continued use of the app after changes constitutes acceptance of the new terms."
+      },
+      {
+        "title": "7. Applicable Law",
+        "text": "These terms are governed by French law. Any disputes will be subject to the exclusive jurisdiction of the courts in France."
+      },
+      {
+        "title": "8. Contact",
+        "text": "For questions about these Terms of Use, please contact us at: contact@keepio.fr or use the contact form on our website."
+      }
+    ]
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 7, 2026",
+    "intro": "Your privacy is important to us. This Privacy Policy explains how Keepio collects, uses, and protects your information.",
+    "sections": [
+      {
+        "title": "1. Information We Collect",
+        "text": "Keepio does not collect any personally identifiable information (name, email, etc.). The app only stores:",
+        "list": [
+          "Content you create: projects, tasks, notes, and tags",
+          "Metadata: creation dates, progress status, and organizational settings"
+        ]
+      },
+      {
+        "title": "2. Data Storage",
+        "text": "Your data is stored locally on your device and, if enabled, synchronized via your private iCloud account using Apple's CloudKit technology. We do not have access to your iCloud data."
+      },
+      {
+        "title": "3. Third-Party Services",
+        "text": "Keepio uses the following third-party services:",
+        "list": [
+          "Apple CloudKit: For optional iCloud synchronization across your devices",
+          "Apple App Store: For processing premium subscription payments"
+        ],
+        "extra": "We do not share your personal information with any other third parties."
+      },
+      {
+        "title": "4. Analytics",
+        "text": "Keepio does not use any third-party analytics or tracking services. We do not track your usage or behavior within the app."
+      },
+      {
+        "title": "5. Your Rights (GDPR)",
+        "text": "In compliance with GDPR and applicable privacy laws, you have the right to:",
+        "list": [
+          "Access your data at any time within the app",
+          "Delete all your data directly from the app",
+          "Disable iCloud synchronization via your iOS Settings",
+          "Request information about your data by contacting us"
+        ]
+      },
+      {
+        "title": "6. Children's Privacy",
+        "text": "Keepio does not knowingly collect information from children under 13. The app is designed for general audiences."
+      },
+      {
+        "title": "7. Data Security",
+        "text": "We take reasonable measures to protect your data. All data synchronized via iCloud is encrypted using Apple's security protocols."
+      },
+      {
+        "title": "8. Changes to This Policy",
+        "text": "We may update this Privacy Policy from time to time. We will notify you of any significant changes through the app or our website."
+      },
+      {
+        "title": "9. Contact Us",
+        "text": "If you have any questions about this Privacy Policy, please contact us at: contact@keepio.fr"
+      }
+    ]
+  }
+}

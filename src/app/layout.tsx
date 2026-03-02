@@ -62,6 +62,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} className="dark">
+      <head>
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="8722af36-3f7e-4890-9bef-d39dd33864b9"
+        />
+      </head>
       <body className={`${inter.variable} ${playfair.variable} font-sans`}>
         <NextIntlClientProvider messages={messages}>
           {children}
